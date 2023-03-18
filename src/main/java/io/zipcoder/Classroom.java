@@ -66,8 +66,8 @@ public class Classroom {
 
     }
 
-    public Student[] getStudentsByScore(Student[] students){
-        Collections.sort(students,
-                Comparator.comparing(Student::getFirstName).thenComparing(Student::getLastName).thenComparing(Student::getAverageExamScore));
+    public Student[] getStudentsByScore(){
+        Arrays.sort(students, Comparator.comparing(Student::getAverageExamScore).thenComparing(Student::getLastName).thenComparing(Student::getFirstName));
+        return students;
     }
 }

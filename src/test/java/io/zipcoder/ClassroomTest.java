@@ -102,5 +102,33 @@ public class ClassroomTest {
 
 
     }
+    @Test
+    public void getStudentsByScoreTest() {
+        //given
+        int maxNumberOfStudents = 2;
+        Classroom classroom = new Classroom(maxNumberOfStudents);
+        Classroom test = new Classroom(maxNumberOfStudents);
+        Double[] examScores = {100.0, 150.0, 250.0, 0.0};
+        Student student = new Student("Leon", "Hunter", examScores);
+
+        Double[] examScores2 = {100.0, 150.0, 250.0, 500.0};
+        Student student2 = new Student("Xeon", "Boo", examScores);
+
+        //when
+        classroom.addStudent(student);
+        classroom.addStudent(student2);
+        test.addStudent(student2);
+        test.addStudent(student);
+        System.out.println(classroom.getStudents());
+
+        Classroom sorted = new Classroom(classroom.getStudentsByScore());
+
+        Student[] actual = sorted.getStudents();
+        Student[] expect = test.getStudents();
+
+        //then
+
+        Assert.assertEquals(expect, actual);
+    }
 }
 
